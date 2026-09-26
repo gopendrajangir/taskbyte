@@ -1,0 +1,92 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+default_platform(:android)
+
+platform :android do
+
+  desc "Build Staging AAB"
+  lane :build_staging do
+    gradle(
+      task: "bundle",
+      flavor: "Staging",
+      build_type: "Release"
+    )
+  end
+
+  desc "Build Production AAB"
+  lane :build_prod do
+    gradle(
+      task: "bundle",
+      flavor: "Production",
+      build_type: "Release"
+    )
+  end
+
+  desc "Build Staging and upload to Firebase"
+
+  lane :staging_firebase do
+
+    gradle(
+      task: "assemble",
+      flavor: "Staging",
+      build_type: "Release"
+    )
+
+    apk_path = File.expand_path(
+      "../app/build/outputs/apk/staging/release/app-staging-release.apk",
+      __dir__
+    )
+
+    puts "APK Path: #{apk_path}"
+
+    firebase_app_distribution(
+      app: "1:433606983220:android:15388ff1ab82c149e39461",
+      firebase_cli_token: ENV["FIREBASE_TOKEN"],
+      android_artifact_type: "APK",
+      android_artifact_path: apk_path,
+      groups: "Testers"
+    )
+
+  end
+
+  # desc "Upload Staging to Internal Testing"
+  # lane :internal do
+  #   gradle(
+  #     task: "bundle",
+  #     flavor: "Staging",
+  #     build_type: "Release"
+  #   )
+
+  #   upload_to_play_store(
+  #     track: "internal",
+  #     aab: "../app/build/outputs/bundle/stagingRelease/app-staging-release.aab"
+  #   )
+  # end
+
+  # desc "Upload Production to Play Store"
+  # lane :production do
+  #   gradle(
+  #     task: "bundle",
+  #     flavor: "Production",
+  #     build_type: "Release"
+  #   )
+
+  #   upload_to_play_store(
+  #     track: "production",
+  #     aab: "../app/build/outputs/bundle/productionRelease/app-production-release.aab"
+  #   )
+  # end
+
+end

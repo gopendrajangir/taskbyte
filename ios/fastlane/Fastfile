@@ -1,0 +1,111 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+  desc "Build Staging IPA"
+  lane :build_staging do
+    build_app(
+      workspace: "TaskByte.xcworkspace",
+      scheme: "TaskByte Staging",
+      export_method: "app-store"
+    )
+  end
+
+  desc "Build Production IPA"
+  lane :build_prod do
+    build_app(
+      workspace: "TaskByte.xcworkspace",
+      scheme: "TaskByte",
+      export_method: "app-store"
+    )
+  end
+
+  desc "Upload Staging to TestFlight"
+  lane :testflight_staging do
+    
+    build_app(
+      workspace: "TaskByte.xcworkspace",
+      scheme: "TaskByte Staging",
+      export_method: "app-store",
+      export_options: {
+        provisioningProfiles: {
+          "com.gopendra.taskbyte" => "TaskByte Distribution Provisioning Profile"
+        }
+      },
+    )
+
+    require 'json'
+
+    api_key_data = JSON.parse(File.read("api_key.json"))
+
+    api_key = app_store_connect_api_key(
+    key_id: api_key_data["key_id"],
+    issuer_id: api_key_data["issuer_id"],
+    key_filepath: File.expand_path(api_key_data["key_filepath"], __dir__)
+    )
+
+    upload_to_testflight(
+      api_key: api_key,
+      skip_waiting_for_build_processing: true
+    )
+  end
+
+  desc "Upload Prod to TestFlight"
+  lane :testflight_prod do
+    
+    build_app(
+      workspace: "TaskByte.xcworkspace",
+      scheme: "TaskByte",
+      export_method: "app-store",
+      export_options: {
+        provisioningProfiles: {
+          "com.gopendra.taskbyte" => "TaskByte Distribution Provisioning Profile"
+        }
+      },
+    )
+
+    require 'json'
+
+    api_key_data = JSON.parse(File.read("api_key.json"))
+
+    api_key = app_store_connect_api_key(
+    key_id: api_key_data["key_id"],
+    issuer_id: api_key_data["issuer_id"],
+    key_filepath: File.expand_path(api_key_data["key_filepath"], __dir__)
+    )
+
+    upload_to_testflight(
+      api_key: api_key,
+      skip_waiting_for_build_processing: true
+    )
+  end
+
+  desc "Upload Production to App Store"
+  lane :app_store do
+    build_app(
+      workspace: "TaskByte.xcworkspace",
+      scheme: "TaskByte",
+      export_method: "app-store"
+    )
+
+    upload_to_app_store(
+      submit_for_review: false,
+      automatic_release: false
+    )
+  end
+end

@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "433606983220",
+    "project_id": "taskbyte-staging",
+    "storage_bucket": "taskbyte-staging.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433606983220:android:15388ff1ab82c149e39461",
+        "android_client_info": {
+          "package_name": "com.gopendra.taskbyte.staging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433606983220-9omo6qso7l6c75ovctob1dkiuqb9m54u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gopendra.taskbyte.staging",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "433606983220-9plfbvdurksuqqfj8q9grf3s4a1d26r2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gopendra.taskbyte.staging",
+            "certificate_hash": "567852cc37d8e30d7d22c4eb47f7bcefc7742d5e"
+          }
+        },
+        {
+          "client_id": "433606983220-nuci4bhtnrt3epdvgg9v92ik8kbqn61j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRDajiBnesxvBfcrHjp1-Wf0CDH494rPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433606983220-nuci4bhtnrt3epdvgg9v92ik8kbqn61j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "433606983220-48t2j6jl4c05k88jetakv8nmpgeg9rr9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gopendra.taskbyte"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

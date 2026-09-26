@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "496387489138",
+    "project_id": "taskbyte-dev",
+    "storage_bucket": "taskbyte-dev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496387489138:android:8665099069255d387071eb",
+        "android_client_info": {
+          "package_name": "com.gopendra.taskbyte.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496387489138-6383aa64olo58ojtfhjq435cdc46m94u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gopendra.taskbyte.dev",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "496387489138-apll33so5p8ncn1cd7bd9gkg6tobjqo7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArJ1kmjwDJTB1kYjuXivJO_NblnjUZDxs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496387489138-apll33so5p8ncn1cd7bd9gkg6tobjqo7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "496387489138-e6nh2het52rbcvf295q9iden8n9vhtkp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gopendra.taskbyte"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
